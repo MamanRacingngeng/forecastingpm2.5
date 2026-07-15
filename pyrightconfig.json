@@ -1,0 +1,37 @@
+{
+  "venvPath": "C:\\Users\\ACER\\anaconda3",
+  "pythonVersion": "3.13",
+  "pythonPlatform": "Windows",
+  "extraPaths": [
+    "C:\\Users\\ACER\\anaconda3\\Lib\\site-packages"
+  ],
+  "reportMissingImports": "none",
+  "reportMissingModuleSource": "none",
+  "reportArgumentType": "none",
+  "reportGeneralTypeIssues": "none",
+  "reportMissingTypeArgument": "none",
+  "reportUndefinedVariable": "none",
+  "reportUnknownMemberType": "none",
+  "reportUnknownVariableType": "none",
+  "reportUnknownArgumentType": "none",
+  "reportImplicitStringConcatenation": "none",
+  "reportUnusedCallResult": "none",
+  "reportCallIssue": "none",
+  "reportAttributeAccessIssue": "none",
+  "reportOptionalMemberAccess": "none",
+  "reportOptionalSubscript": "none",
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "extraPaths": [
+        "C:\\Users\\ACER\\anaconda3\\Lib\\site-packages"
+      ]
+    },
+    {
+      "root": "ml",
+      "extraPaths": [
+        "C:\\Users\\ACER\\anaconda3\\Lib\\site-packages"
+      ]
+    }
+  ]
+}

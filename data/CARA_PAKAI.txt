@@ -1,0 +1,46 @@
+CARA MENARUH DATASET & MODEL
+
+==============================
+
+
+
+1. Dataset prediksi multi-kota (wajib):
+
+   d:\demoskripsi\data\global_air_quality.csv
+
+
+
+2. Dataset model terbaru / time series PM2.5 (untuk Jakarta):
+
+   d:\demoskripsi\data\pm25.csv
+
+   Format: datetime, PM2.5
+
+
+
+Hyperparameter model SCA-LSTM tersimpan di:
+
+   ml\model_config.py
+
+   config\pm25.php
+
+
+
+Sistem otomatis:
+
+  - Prediksi Jakarta memakai pm25.csv + hyperparameter SCA-LSTM terbaru
+
+  - Kota lain memakai global_air_quality.csv dengan parameter yang sama
+
+  - Timesteps: 10
+
+
+
+Ganti dataset:
+
+  1. Copy file CSV baru ke folder data\
+
+  2. Sesuaikan nama file (pm25.csv / global_air_quality.csv)
+
+  3. Muat ulang halaman prediksi
+

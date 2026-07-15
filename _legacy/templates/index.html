@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prediksi Kualitas Udara PM2.5 | LSTM Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span class="logo-icon">🌫️</span>
+        <span>PM2.5 Predictor</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#metodologi">Metodologi</a></li>
+        <li><a href="#hasil">Hasil</a></li>
+        <li><a href="#demo">Demo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header id="beranda" class="hero">
+    <div class="container hero-content">
+      <div class="hero-badge">Demo Skripsi — Deep Learning</div>
+      <h1>Prediksi Kualitas Udara <span class="highlight">PM2.5</span></h1>
+      <p class="hero-desc">
+        Sistem prediksi konsentrasi partikel halus PM2.5 menggunakan model
+        <strong>Long Short-Term Memory (LSTM)</strong> dengan optimasi
+        <strong>Grid Search</strong> dan <strong>Sine Cosine Algorithm (SCA)</strong>.
+      </p>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary">Lihat Demo Prediksi</a>
+        <button id="btn-refresh" class="btn btn-outline">Latih Ulang Model</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Model Dibandingkan</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">LSTM</span>
+          <span class="stat-label">Arsitektur Deep Learning</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">SCA</span>
+          <span class="stat-label">Metaheuristic Optimizer</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bg"></div>
+  </header>
+
+  <section id="tentang" class="section">
+    <div class="container">
+      <h2 class="section-title">Apa itu PM2.5?</h2>
+      <p class="section-subtitle">
+        Partikel berukuran ≤ 2.5 mikrometer yang berdampak serius pada kesehatan manusia
+      </p>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">🏭</div>
+          <h3>Sumber Polutan</h3>
+          <p>Berasal dari pembakaran bahan bakar, industri, kendaraan bermotor, dan aktivitas pembakaran terbuka.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🫁</div>
+          <h3>Dampak Kesehatan</h3>
+          <p>Dapat masuk ke paru-paru dan aliran darah, memicu penyakit pernapasan, jantung, dan kanker paru.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">📊</div>
+          <h3>Perlu Prediksi</h3>
+          <p>Prediksi akurat membantu pemerintah dan masyarakat mengambil tindakan pencegahan polusi udara.</p>
+        </div>
+      </div>
+      <div class="pm25-scale">
+        <h3>Standar Kualitas Udara PM2.5 (µg/m³)</h3>
+        <div class="scale-bar">
+          <div class="scale-item good">0–12 Baik</div>
+          <div class="scale-item moderate">12–35 Sedang</div>
+          <div class="scale-item unhealthy">35–55 Tidak Sehat</div>
+          <div class="scale-item very-unhealthy">55+ Sangat Tidak Sehat</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodologi" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Metodologi Penelitian</h2>
+      <p class="section-subtitle">Tiga pendekatan LSTM yang dibandingkan dalam penelitian ini</p>
+      <div class="method-grid">
+        <div class="method-card">
+          <div class="method-num">01</div>
+          <h3>LSTM Default</h3>
+          <p>Model LSTM dengan hyperparameter tetap: 50 unit, learning rate 0.001, 20 epoch. Sebagai baseline perbandingan.</p>
+          <ul>
+            <li>Units: 50</li>
+            <li>LR: 0.001</li>
+            <li>Epochs: 20</li>
+          </ul>
+        </div>
+        <div class="method-card featured">
+          <div class="method-num">02</div>
+          <h3>Grid Search LSTM</h3>
+          <p>Pencarian sistematis kombinasi hyperparameter terbaik dari grid yang telah ditentukan.</p>
+          <ul>
+            <li>Units: [32, 64]</li>
+            <li>LR: [0.001, 0.005]</li>
+            <li>Metrik: RMSE terendah</li>
+          </ul>
+        </div>
+        <div class="method-card">
+          <div class="method-num">03</div>
+          <h3>SCA-LSTM</h3>
+          <p>Optimasi hyperparameter menggunakan Sine Cosine Algorithm — metaheuristic berbasis fungsi sinus dan kosinus.</p>
+          <ul>
+            <li>Units: 16–128</li>
+            <li>LR: 0.0001–0.01</li>
+            <li>Agents: 5, Iterasi: 5</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pipeline">
+        <h3>Alur Kerja Sistem</h3>
+        <div class="pipeline-steps">
+          <div class="step"><span>📥</span><p>Data PM2.5</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span>🔧</span><p>Preprocessing</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span>🧠</span><p>Model LSTM</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span>⚙️</span><p>Optimasi HP</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span>📈</span><p>Prediksi</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span>✅</span><p>Evaluasi</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hasil" class="section">
+    <div class="container">
+      <h2 class="section-title">Hasil Evaluasi Model</h2>
+      <p class="section-subtitle">Perbandingan performa berdasarkan RMSE, MAPE, dan R²</p>
+
+      <div id="dataset-info" class="dataset-banner hidden">
+        <span class="dataset-icon">📁</span>
+        <div>
+          <strong>Dataset aktif:</strong> <span id="dataset-file">-</span>
+          <span class="dataset-meta"> · Kolom: <span id="dataset-col">-</span> · <span id="dataset-rows">-</span> baris</span>
+        </div>
+      </div>
+
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Melatih model LSTM... Mohon tunggu (±1–3 menit)</p>
+      </div>
+
+      <div id="results" class="hidden">
+        <div class="metrics-grid">
+          <div class="metric-card" id="card-default">
+            <h3>LSTM Default</h3>
+            <div class="metric-values">
+              <div><span class="label">RMSE</span><span class="value rmse">-</span></div>
+              <div><span class="label">MAPE</span><span class="value mape">-</span></div>
+              <div><span class="label">R²</span><span class="value r2">-</span></div>
+            </div>
+            <div class="params-info"></div>
+          </div>
+          <div class="metric-card" id="card-grid">
+            <h3>Grid Search LSTM</h3>
+            <div class="metric-values">
+              <div><span class="label">RMSE</span><span class="value rmse">-</span></div>
+              <div><span class="label">MAPE</span><span class="value mape">-</span></div>
+              <div><span class="label">R²</span><span class="value r2">-</span></div>
+            </div>
+            <div class="params-info"></div>
+          </div>
+          <div class="metric-card best" id="card-sca">
+            <div class="best-badge">SCA Optimized</div>
+            <h3>SCA-LSTM</h3>
+            <div class="metric-values">
+              <div><span class="label">RMSE</span><span class="value rmse">-</span></div>
+              <div><span class="label">MAPE</span><span class="value mape">-</span></div>
+              <div><span class="label">R²</span><span class="value r2">-</span></div>
+            </div>
+            <div class="params-info"></div>
+          </div>
+        </div>
+
+        <div class="chart-comparison">
+          <h3>Perbandingan Metrik</h3>
+          <canvas id="metricsChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Demo Prediksi</h2>
+      <p class="section-subtitle">Visualisasi nilai aktual vs prediksi pada data uji</p>
+
+      <div id="demo-content" class="hidden">
+        <div class="model-tabs">
+          <button class="tab active" data-model="default">LSTM Default</button>
+          <button class="tab" data-model="grid_search">Grid Search</button>
+          <button class="tab" data-model="sca_lstm">SCA-LSTM</button>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="predictionChart"></canvas>
+        </div>
+        <p class="chart-note">
+          <span id="sample-info"></span> — Garis biru: nilai aktual, garis oranye: prediksi model
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Demo Website — Prediksi Kualitas Udara PM2.5 dengan LSTM, Grid Search & SCA</p>
+      <p class="footer-sub">Dibangun dengan Python, TensorFlow, Flask & Chart.js</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

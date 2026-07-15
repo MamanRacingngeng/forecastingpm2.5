@@ -1,0 +1,1 @@
+df.corr(numeric_only=True)['PM2.5'].sort_values(ascending=False)
