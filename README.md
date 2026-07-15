@@ -17,11 +17,11 @@ Buka **http://localhost:3000**
 ### Deploy Vercel
 
 1. Push ke GitHub
-2. Import di [vercel.com](https://vercel.com) → pilih repo **forecastingpm2.5**
-3. Framework: **Next.js** (otomatis)
-4. Deploy — root `vercel.json` sudah mengarahkan build ke folder `web/`
+2. Import di [vercel.com](https://vercel.com) → repo **forecastingpm2.5**
+3. **Penting:** Settings → General → **Root Directory** → isi `web` → Save
+4. Framework: **Next.js** → Deploy
 
-> Jika build masih gagal, buka **Project Settings → General → Root Directory** → isi `web` → **Redeploy**.
+> Root Directory **wajib** `web` karena Next.js ada di subfolder, bukan di root repo (Laravel).
 
 Detail lengkap: [`web/README.md`](web/README.md)
 

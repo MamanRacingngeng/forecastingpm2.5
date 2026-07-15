@@ -5,14 +5,8 @@
   "scripts": {
     "dev": "vite",
     "dev:web": "npm run dev --prefix web",
-    "build": "npm run build --prefix web",
-    "build:laravel": "vite build",
-    "vercel-build": "npm run build --prefix web"
-  },
-  "dependencies": {
-    "next": "16.2.10",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "build:web": "npm run build --prefix web",
+    "build:laravel": "vite build"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
